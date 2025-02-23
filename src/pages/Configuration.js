@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import {
+  getApplications,
   getConfigurations,
   getConfigurationsByAppId,
   addConfiguration,
@@ -54,7 +55,9 @@ export default function Configuration() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-6">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">Configuration</h1>
+        <h1 className="text-3xl font-bold">
+          Configuration - <span className="font-bold italic">{formData.appId}</span>
+        </h1>
         <button
           onClick={() => setShowForm(true)}
           className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
@@ -65,21 +68,26 @@ export default function Configuration() {
 
       {showForm && (
         <form onSubmit={handleSubmit} className="mb-6 space-y-4">
-          <div>
+          <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700">
-              Application ID
+              Select Application
             </label>
-            <input
-              type="text"
+            <select
               value={formData.appId}
-              onChange={(e) =>
-                setFormData({ ...formData, appId: e.target.value })
-              }
+              onChange={(e) => setFormData({ ...formData, appId: e.target.value })}
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               required
-            />
+            >
+              <option value="">Select an application</option>
+              {getApplications().filter(app => !app.isDeleted).map(app => (
+                <option key={app.id} value={app.id}>
+                  {app.name}
+                </option>
+              ))}
+            </select>
           </div>
-          <div>
+
+          <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700">
               Key
             </label>
@@ -91,29 +99,25 @@ export default function Configuration() {
               required
             />
           </div>
-          <div>
+          <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700">
               Value
             </label>
             <input
               type="text"
               value={formData.value}
-              onChange={(e) =>
-                setFormData({ ...formData, value: e.target.value })
-              }
+              onChange={(e) => setFormData({ ...formData, value: e.target.value })}
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               required
             />
           </div>
-          <div>
+          <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700">
               Description
             </label>
             <textarea
               value={formData.description}
-              onChange={(e) =>
-                setFormData({ ...formData, description: e.target.value })
-              }
+              onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
             />
           </div>
@@ -146,6 +150,9 @@ export default function Configuration() {
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 App ID
               </th>
+              {/* <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Application Name
+              </th> */}
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Key
               </th>
@@ -164,11 +171,10 @@ export default function Configuration() {
             {configs.map((config) => (
               <tr key={config.id}>
                 <td className="px-6 py-4 whitespace-nowrap">{config.appId}</td>
-                <td className="px-6 py-4 whitespace-nowrap">{config.key}</td>
-                <td className="px-6 py-4 whitespace-nowrap">{config.value}</td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {config.description}
+                <td className="px-6 py-4 whitespace-nowrap">{config.value}
                 </td>
+                <td className="px-6 py-4 whitespace-nowrap">{config.value}</td>
+                <td className="px-6 py-4 whitespace-nowrap">{config.description}</td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <button
                     onClick={() => {

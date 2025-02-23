@@ -65,15 +65,19 @@ export default function Applications() {
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {applications.map((app) => (
-          <ApplicationCard
-            key={app.id}
-            app={app}
-            onEdit={handleEdit}
-            onDelete={handleDelete}
-            onToggle={handleToggle}
-          />
-        ))}
+        {applications.length > 0 ? (
+          applications.map((app) => (
+            <ApplicationCard
+              key={app.id}
+              app={app}
+              onEdit={handleEdit}
+              onDelete={handleDelete}
+              onToggle={handleToggle}
+            />
+          ))
+        ) : (
+          <p>No applications found.</p>
+        )}
       </div>
     </div>
   );

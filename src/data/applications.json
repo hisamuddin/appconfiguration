@@ -1,3 +1,19 @@
 {
-  "applications": []
+  "applications": [
+    {
+      "id": 1,
+      "name": "Application One",
+      "isDeleted": false
+    },
+    {
+      "id": 2,
+      "name": "Application Two",
+      "isDeleted": false
+    },
+    {
+      "id": 3,
+      "name": "Application Three",
+      "isDeleted": false
+    }
+  ]
 }

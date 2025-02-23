@@ -19,16 +19,16 @@ export default function ApplicationForm({ app, onSubmit, onCancel }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
       <div>
-        <label className="block text-sm font-medium text-gray-700">
+        <label className="block text-sm font-medium text-gray-700 md:text-base">
           Application Name
         </label>
         <input
           type="text"
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 md:text-lg"
           required
         />
       </div>
@@ -37,6 +37,7 @@ export default function ApplicationForm({ app, onSubmit, onCancel }) {
           Description
         </label>
         <textarea
+          rows="4"
           value={formData.description}
           onChange={(e) =>
             setFormData({ ...formData, description: e.target.value })
@@ -44,7 +45,8 @@ export default function ApplicationForm({ app, onSubmit, onCancel }) {
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
         />
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center md:mt-4">
+
         <input
           type="checkbox"
           checked={formData.enabled}
@@ -58,14 +60,14 @@ export default function ApplicationForm({ app, onSubmit, onCancel }) {
       <div className="flex space-x-2">
         <button
           type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 md:px-6 md:py-3"
         >
           {app ? 'Update' : 'Create'} Application
         </button>
         <button
           type="button"
           onClick={onCancel}
-          className="bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300"
+          className="bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300 md:px-6 md:py-3"
         >
           Cancel
         </button>
