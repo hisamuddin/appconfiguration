@@ -23,7 +23,7 @@ Experience the application live: [App Configuration Demo](https://appconfigurati
 
 This screenshot showcases the **Applications** page, where you can view all your applications, manage their configurations, and access editing options.
 
-![Applications Screen](your_screenshot_url_here)
+![Applications Screen](https://github.com/hisamuddin/appconfiguration/blob/main/src/pages/image.png?raw=true)
 
 ## Installation
 
