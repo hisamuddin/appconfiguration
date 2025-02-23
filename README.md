@@ -1,7 +1,5 @@
 # App Configuration
 
-![App Logo](https://via.placeholder.com/400x200.png?text=App+Configuration+Logo)
-
 ## Description
 
 App Configuration is a modern web application designed to efficiently manage and configure applications. Users can easily add, edit, or delete applications and oversee their configurations in a streamlined interface. It provides real-time updates on the status of each application, enabling quick access to essential management tools.
@@ -21,7 +19,7 @@ Experience the application live: [App Configuration Demo](https://appconfigurati
 ## Screenshots
 
 ### Applications Page
-![Applications Page](https://via.placeholder.com/800x400.png?text=Applications+Page)
+![Applications Page](https://github.com/hisamuddin/appconfiguration/blob/main/src/pages/Screenshot%202025-02-23%20135420.png?raw=true)
 
 This screenshot showcases the **Applications** page, where you can view all your applications, manage their configurations, and access editing options.
 
